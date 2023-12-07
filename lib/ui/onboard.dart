@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:plant_app/components/boardplant.dart';
 import 'package:plant_app/constants.dart';
+import 'package:plant_app/ui/login.dart';
 
 class OnBoardinScreen extends StatefulWidget {
   const OnBoardinScreen({super.key});
-
   @override
   State<OnBoardinScreen> createState() => _OnBoardinScreenState();
 }
@@ -50,56 +51,95 @@ class _OnBoardinScreenState extends State<OnBoardinScreen> {
             },
             controller: _pageController,
             children: [
-              createPage(),
+              createPage(
+                image: 'assets/images/plant-one.png',
+                title: Constants.titleOne,
+                description: Constants.descriptionOne,
+              ),
+              createPage(
+                image: 'assets/images/plant-two.png',
+                title: Constants.titleTwo,
+                description: Constants.descriptionTwo,
+              ),
+              createPage(
+                image: 'assets/images/plant-three.png',
+                title: Constants.titleThree,
+                description: Constants.descriptionThree,
+              ),
             ],
+          ),
+          //This is the Indicator builder
+          Positioned(
+            bottom: 80,
+            left: 30,
+            child: Row(
+              children: _buildIndicator(),
+            ),
+          ),
+          Positioned(
+            bottom: 60,
+            right: 30,
+            child: Container(
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    if (currentIndex < 2) {
+                      currentIndex++;
+                      if (currentIndex < 3) {
+                        _pageController.nextPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.easeIn);
+                      }
+                    } else {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (_) => LoginScreen()));
+                      //Not same as the video because it's dynamic, and can't assign to string
+                    }
+                  });
+                },
+                icon: Icon(
+                  Icons.arrow_forward_ios,
+                  size: 24,
+                  color: Colors.white,
+                ),
+              ),
+              padding: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Constants.primaryColor,
+              ),
+            ),
           ),
         ],
       ),
     );
   }
-}
 
-class createPage extends StatelessWidget {
-  // final String image;
-  // final Strinb
-  const createPage({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 50, right: 50, bottom: 80),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 350,
-            child: Image.asset('assets/images/plant-one.png'),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            Constants.titleOne,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Constants.primaryColor,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            Constants.descriptionOne,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.w400, color: Colors.grey),
-          )
-        ],
+//Create the indicator decorations wideget here
+  Widget _indicator(bool isActive) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: 10.0,
+      width: isActive ? 20 : 8,
+      margin: EdgeInsets.only(right: 6),
+      decoration: BoxDecoration(
+        color: Constants.primaryColor,
+        borderRadius: BorderRadius.circular(10),
       ),
     );
+  }
+
+  //Create the Indicator list
+  List<Widget> _buildIndicator() {
+    List<Widget> indicators = [];
+
+    for (int i = 0; i < 3; i++) {
+      if (currentIndex == i) {
+        indicators.add(_indicator(true));
+      } else {
+        indicators.add(_indicator(false));
+      }
+    }
+    return indicators;
   }
 }
