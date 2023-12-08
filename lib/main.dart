@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/onboard.dart';
+import 'package:plant_app/ui/root_page.dart';
 
 void main() {
   runApp(const Myapp());
@@ -19,4 +20,3 @@ class Myapp extends StatelessWidget {
     );
   }
 }
-
