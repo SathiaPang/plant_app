@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plant_app/components/boardplant.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/login.dart';
+import 'package:plant_app/ui/root_page.dart';
 
 class OnBoardinScreen extends StatefulWidget {
   const OnBoardinScreen({super.key});
@@ -92,7 +93,7 @@ class _OnBoardinScreenState extends State<OnBoardinScreen> {
                       }
                     } else {
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (_) => LoginScreen()));
+                          MaterialPageRoute(builder: (_) => RootPage()));
                       //Not same as the video because it's dynamic, and can't assign to string
                     }
                   });

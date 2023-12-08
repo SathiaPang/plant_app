@@ -20,19 +20,3 @@ class Myapp extends StatelessWidget {
   }
 }
 
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           "Hello there",
-//           style: TextStyle(color: Colors.white),
-//         ),
-//         backgroundColor: Constants.primaryColor,
-//       ),
-//     );
-//   }
-// }
