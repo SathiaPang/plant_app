@@ -16,7 +16,7 @@ class Myapp extends StatelessWidget {
       // Must use always, and then start to write like that
       debugShowCheckedModeBanner: false,
       title: 'OnBoarding Screen ',
-      home: OnBoardinScreen(),
+      home: RootPage(),
     );
   }
 }

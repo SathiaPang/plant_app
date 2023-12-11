@@ -81,12 +81,20 @@ class _RootPageState extends State<RootPage> {
         backgroundColor: Constants.primaryColor,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // bottomNavigationBar: AnimatedBottomNavigationBar(
-      //   splashColor: Constants.primaryColor,
-      //   activeColor: Constants.primaryColor,
-      //   inactiveColor: Colors.black.withOpacity(0.5),
-      //   i
-      // ),
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        splashColor: Constants.primaryColor,
+        activeColor: Constants.primaryColor,
+        inactiveColor: Colors.black.withOpacity(0.5), 
+        icons: iconList,
+        activeIndex: _bottomNavIndex,
+        gapLocation: GapLocation.center,
+        //Creating the onTap Function for bottow Navigation Bar
+        onTap: (index) {
+          setState(() {
+            _bottomNavIndex = index;
+          });
+        },
+      ),
     );
   }
 }
