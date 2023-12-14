@@ -131,11 +131,20 @@ class _HomePageState extends State<HomePage> {
                               height: 50,
                               width: 50,
                               child: IconButton(
-                                onPressed: null,
-                                icon: Icon(_plantList[index].isFavorated == true
-                                    ? Icons.favorite
-                                    : Icons.favorite_border),
-                                color: Constants.primaryColor,
+                                onPressed: () {
+                                  bool isFavorited = toggleIsFavorated(
+                                      _plantList[index].isFavorated);
+                                  setState(() {
+                                    bool isFavorited = toggleIsFavorated(
+                                        _plantList[index].isFavorated);
+                                    _plantList[index].isFavorated = isFavorited;
+                                  });
+                                },
+                                icon: Icon(
+                                    _plantList[index].isFavorated == true
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: Constants.primaryColor),
                                 iconSize: 30,
                               ),
                               decoration: BoxDecoration(
