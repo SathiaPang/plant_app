@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:plant_app/constants.dart';
 import 'package:plant_app/ui/login.dart';
 import 'package:plant_app/ui/screens/cart_page.dart';
+import 'package:plant_app/ui/screens/detail_page.dart';
 import 'package:plant_app/ui/screens/favorite_page.dart';
 import 'package:plant_app/ui/screens/home_page.dart';
 import 'package:plant_app/ui/screens/profile_page.dart';
@@ -24,6 +25,7 @@ class _RootPageState extends State<RootPage> {
     FavoritePage(),
     CartPage(),
     ProfilePage(),
+    //DetailPage(),
   ];
   //List of the pages icons
   List<IconData> iconList = [
@@ -84,7 +86,7 @@ class _RootPageState extends State<RootPage> {
       bottomNavigationBar: AnimatedBottomNavigationBar(
         splashColor: Constants.primaryColor,
         activeColor: Constants.primaryColor,
-        inactiveColor: Colors.black.withOpacity(0.5), 
+        inactiveColor: Colors.black.withOpacity(0.5),
         icons: iconList,
         activeIndex: _bottomNavIndex,
         gapLocation: GapLocation.center,
