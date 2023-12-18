@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: _plantTypes.length,
+                itemCount: _plantTypes.length, 
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: EdgeInsets.all(8.0),
