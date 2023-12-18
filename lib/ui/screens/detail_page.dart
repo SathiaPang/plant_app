@@ -62,7 +62,7 @@ class _DetailPageState extends State<DetailPage> {
                             title: 'Size',
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 15,
                           ),
                           PlantFeature(
                             plantFeature:
@@ -70,7 +70,7 @@ class _DetailPageState extends State<DetailPage> {
                             title: 'Humidity',
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 15,
                           ),
                           PlantFeature(
                             plantFeature:
@@ -90,7 +90,7 @@ class _DetailPageState extends State<DetailPage> {
             left: 0,
             right: 0,
             child: Container(
-              padding: EdgeInsets.only(top: 80, left: 30, right: 30),
+              padding: EdgeInsets.only(top: 70, left: 30, right: 30),
               height: size.height * .55,
               width: size.width,
               decoration: BoxDecoration(
@@ -119,17 +119,106 @@ class _DetailPageState extends State<DetailPage> {
                             ),
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
+                          ),
+                          Text(
+                            r'$' + _plantList[widget.plantId].price.toString(),
+                            style: TextStyle(
+                                color: Constants.blackColor,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Text(
+                            _plantList[widget.plantId].rating.toString(),
+                            style: TextStyle(
+                                fontSize: 30, color: Constants.primaryColor),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Icon(
+                            Icons.star,
+                            size: 30,
+                            color: Constants.primaryColor,
+                          )
+                        ],
+                      )
                     ],
+                  ),
+                  Expanded(
+                    child: Text(
+                      _plantList[widget.plantId].decription,
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                          height: 1.5,
+                          fontSize: 18,
+                          color: Constants.blackColor),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+      //Create and Custom the action button
+      floatingActionButton: SizedBox(
+        width: size.width * .9,
+        height: 50,
+        child: Row(
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              child: Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+              decoration: BoxDecoration(
+                color: Constants.primaryColor.withOpacity(.6),
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(0, 1),
+                    blurRadius: 5,
+                    color: Constants.primaryColor.withOpacity(.3),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Constants.primaryColor,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 1),
+                      blurRadius: 5,
+                      color: Constants.primaryColor.withOpacity(.5),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Text(
+                    'BUY NOW',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
