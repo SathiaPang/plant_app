@@ -12,6 +12,10 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  bool toggleIsFavorated(bool isFavorited) {
+    return !isFavorited;
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Plant> _plantList = Plant.plantList;
@@ -53,6 +57,7 @@ class _DetailPageState extends State<DetailPage> {
                     top: 10,
                     right: 0,
                     child: SizedBox(
+                      height: 200,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -149,13 +154,16 @@ class _DetailPageState extends State<DetailPage> {
                       )
                     ],
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Expanded(
                     child: Text(
                       _plantList[widget.plantId].decription,
                       textAlign: TextAlign.justify,
                       style: TextStyle(
                           height: 1.5,
-                          fontSize: 18,
+                          fontSize: 20,
                           color: Constants.blackColor),
                     ),
                   ),
@@ -230,19 +238,27 @@ class _DetailPageState extends State<DetailPage> {
         debugPrint('Favorite');
       },
       child: Container(
-        height: 40,
-        width: 40,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
-          color: Constants.primaryColor.withOpacity(.15),
-        ),
-        child: Icon(
-          _plantList[widget.plantId].isFavorated == true
-              ? Icons.favorite
-              : Icons.favorite_border,
-          color: Constants.primaryColor,
-        ),
-      ),
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: Constants.primaryColor.withOpacity(.15),
+          ),
+          child: IconButton(
+            onPressed: () {
+              setState(() {
+                bool isFavorited =
+                    toggleIsFavorated(_plantList[widget.plantId].isFavorated);
+                _plantList[widget.plantId].isFavorated = isFavorited;
+              });
+            },
+            icon: Icon(
+              _plantList[widget.plantId].isFavorated == true
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+              color: Constants.primaryColor,
+            ),
+          )),
     );
   }
 
