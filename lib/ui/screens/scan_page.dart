@@ -76,7 +76,7 @@ class _ScanPageState extends State<ScanPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Image.asset('asset/images/code')
+                    Image.asset('assets/images/code-scan.png'),
                   ],
                 ),
               ),
